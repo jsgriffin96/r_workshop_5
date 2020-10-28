@@ -17,13 +17,16 @@
 512 < 1024
 
 3 < 3
+
 3 <= 3
 
 #greater than
 512 > 1024
 
 4 > 4
+
 4 >= 4
+
 #AND/OR/NOT
 TRUE & TRUE
 TRUE & FALSE
@@ -55,12 +58,19 @@ if(password==userInput) {
   print("Wrong Password!")
 }
 
+##while loops
+randNum <- sample(1:100, 1)
+while (randNum != 30) {
+  print(randNum)
+  randNum <- sample(1:100, 1)
+}
 
-##for loops
-week <- c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 
-for (day in week) {
-  print(day)
+##for loops //use when you want to look through all elements
+weeklySales <- c(70, 74, 67, 75, 80, 79, 75)
+sum <- 0                    #output
+for (sale in weeklySales) { #sequence
+  sum <- sum + sale         #body
 }
 
 ##Combining both ideas
