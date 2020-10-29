@@ -92,10 +92,25 @@ printTenAtPosition <- function(numbers, i){
 
 printTenAtPosition(weeklySales, 2)
 
+#apply (input is dataframe and matrix; output: vector,list, or array)
+myMatrix <- matrix(C<-(1:10),nrow=5, ncol=6)
+
+apply(myMatrix, 2, sum) #MARGIN 1=rows, 2=col
+colSums(myMatrix)
+
+apply(myMatrix, 1, sum)
+rowSums(myMatrix)
+
+#lapply (input: data frame or matrix; output:list)
+cities <- c('POMONA', 'CHINO hills', 'Los ANGELES')
+lowerCities <- lapply(cities, tolower)
 
 
+#sapply (input: list, vector, or data frame/output:vector or matrix)
+lowerCities <- sapply(cities, tolower)
 
-
+#tapply
+tapply(iris$Petal.Width, iris$Species, max)
 
 
 
