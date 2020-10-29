@@ -2,11 +2,7 @@
 #Equals
 2==2
 
-5==6
-
 "Jarrod"=="Cool"
-
-"Test"=="Test"
 
 #Not equal to
 5 != 9
@@ -23,39 +19,42 @@
 #greater than
 512 > 1024
 
-4 > 4
-
 4 >= 4
 
 #AND/OR/NOT
+#AND (Both conditions need to be true)
 TRUE & TRUE
 TRUE & FALSE
 FALSE & FALSE
-
+#OR (one condition needs to be true)
 TRUE | FALSE
 TRUE | TRUE
 FALSE | FALSE
-
+#NOT
 !TRUE
 !FALSE
 
 
-####Control Statements
-password <- "hunter2"
-
-userInput <- "hunter2"
-
-#if statements
-if(password==userInput) {
-  print("Correct Password!")
-}
+####Control Structures
+password <- "dog"
+userInput <- "dog"
 
 
 ##if else statements
-if(password==userInput) {
+if(password == userInput) {
   print("Correct Password!")
-} else if(password!=userInput){
+} else if (password != userInput) {
   print("Wrong Password!")
+} else{
+  print("Error")
+}
+
+##for loops //use when you want to look through all elements
+weeklySales <- c(70, 74, 67, 75, 80, 79, 75)
+sum <- 0                    #output
+for (sale in weeklySales) { #sequence
+  print(sale)               #body
+  sum <- sum + sale         #body
 }
 
 ##while loops
@@ -63,14 +62,6 @@ randNum <- sample(1:100, 1)
 while (randNum != 30) {
   print(randNum)
   randNum <- sample(1:100, 1)
-}
-
-
-##for loops //use when you want to look through all elements
-weeklySales <- c(70, 74, 67, 75, 80, 79, 75)
-sum <- 0                    #output
-for (sale in weeklySales) { #sequence
-  sum <- sum + sale         #body
 }
 
 ##Combining both ideas
@@ -83,11 +74,28 @@ for (number in random) {
 }
 
 
-#### Creating fuctions
+#### Creating functions
 printTen <- function(item){
   for (i in 1:10) {
     print(item)
   }
 }
-
 printTen("Ok!")
+
+#function as arguments
+printTen(mean(weeklySales))
+
+#nested functions
+printTenAtPosition <- function(numbers, i){
+  printTen(numbers[i])
+}
+
+printTenAtPosition(weeklySales, 2)
+
+
+
+
+
+
+
+
