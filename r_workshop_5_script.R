@@ -24,6 +24,7 @@
 #AND/OR/NOT
 #AND (Both conditions need to be true)
 TRUE & TRUE
+4>3 & 5>4
 TRUE & FALSE
 FALSE & FALSE
 #OR (one condition needs to be true)
@@ -57,21 +58,17 @@ for (sale in weeklySales) { #sequence
   sum <- sum + sale         #body
 }
 
-##while loops
-randNum <- sample(1:100, 1)
-while (randNum != 30) {
-  print(randNum)
-  randNum <- sample(1:100, 1)
-}
 
 ##Combining both ideas
-random <- sample(1:1000, 50)
-
-for (number in random) {
-  if(number>500){
+randomNums <- sample(1:1000, 50)
+count <- 0
+for (number in randomNums) {
+  if (number > 500) {
+    count <- count + 1
     print(number)
   }
 }
+count
 
 
 #### Creating functions
@@ -92,25 +89,43 @@ printTenAtPosition <- function(numbers, i){
 
 printTenAtPosition(weeklySales, 2)
 
-#apply (input is dataframe and matrix; output: vector,list, or array)
-myMatrix <- matrix(C<-(1:10),nrow=5, ncol=6)
+#### Apply 
+#apply (input is dataframe or matrix; output: vector,list, or array)
+carsOutput <- apply(mtcars, 2, sum) #MARGIN 1=rows, 2=col
+class(carsOutput)
+colSums(mtcars)
 
-apply(myMatrix, 2, sum) #MARGIN 1=rows, 2=col
-colSums(myMatrix)
+apply(mtcars, 1, sum)
+rowSums(mtcars)
 
-apply(myMatrix, 1, sum)
-rowSums(myMatrix)
+squaredCars <- apply(mtcars, 2, function(x) x^2)
+
 
 #lapply (input: data frame or matrix; output:list)
 cities <- c('POMONA', 'CHINO hills', 'Los ANGELES')
 lowerCities <- lapply(cities, tolower)
 
+lapply(mtcars, function(x) x+2)
+lapply(mtcars$mpg, function(x) x+2)
+
 
 #sapply (input: list, vector, or data frame/output:vector or matrix)
 lowerCities <- sapply(cities, tolower)
 
+sapply(mtcars, function(x) x+2)
+sapply(mtcars$mpg, function(x) x+2)
+
+
 #tapply
-tapply(iris$Petal.Width, iris$Species, max)
+head(mtcars)
+tapply(mtcars$mpg, mtcars$cyl, mean)
+
+tapply(mtcars$hp, mtcars$cyl, mean)
+
+library(tidyverse)
+mtcars %>% 
+  group_by(cyl) %>%
+  summarise(avgMPG=mean(mpg))
 
 
 
